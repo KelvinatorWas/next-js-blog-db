@@ -44,6 +44,7 @@ const tags = {
 const post_tags = {
   tableName: "post_tags",
   sqlTableData: {
+    post_tag_id: "INT AUTO_INCREMENT PRIMARY KEY",
     post_id: "INT NOT NULL",
     tag_id: "INT NOT NULL",
   },

@@ -5,8 +5,6 @@ export const getImage = (app:express.Express) => {
   app.get('/images/:name', async (req, res) => {
     const { name } = req.params;
   
-    console.log(name)
-  
     const selectImage = `
       SELECT image_data
       FROM images

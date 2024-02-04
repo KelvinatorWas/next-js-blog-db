@@ -7,6 +7,7 @@ const blog_post = {
   sqlTableData: {
     post_id: "INT AUTO_INCREMENT NOT NULL",
     title: "VARCHAR(255) NOT NULL",
+    description: "TEXT NOT NULL",
     content: "TEXT NOT NULL",
     createdAt: "TIMESTAMP",
     updatedAt: "TIMESTAMP",
@@ -176,27 +177,27 @@ connection.connect((err) => {
           console.log(`Table ${tableQuery.name} created or already exists`);
         });
 
-        if (tableQuery.name == "images") {
-          console.log('\n INSERTING IMAGE INTO TABLE \n')
-          const insertDataQuery = `
-            INSERT INTO ${images.tableName} (image_name, post_id, image_data) VALUES
-              ('sunset', 1, ?)
-          `;
+        // if (tableQuery.name == "images") {
+        //   console.log('\n INSERTING IMAGE INTO TABLE \n')
+        //   const insertDataQuery = `
+        //     INSERT INTO ${images.tableName} (image_name, post_id, image_data) VALUES
+        //       ('sunset', 1, ?)
+        //   `;
 
-          const image = fs.readFileSync('./images/sunset.jpg')
+        //   const image = fs.readFileSync('./images/sunset.jpg')
             
-          // Execute the query to insert data
-          connection.query(insertDataQuery, image, (insertDataError, insertDataResults) => {
-            if (insertDataError) {
-              console.error('Error inserting data:', insertDataError);
-            } else {
-              console.log('Data inserted or already exists');
-            }
+        //   // Execute the query to insert data
+        //   connection.query(insertDataQuery, image, (insertDataError, insertDataResults) => {
+        //     if (insertDataError) {
+        //       console.error('Error inserting data:', insertDataError);
+        //     } else {
+        //       console.log('Data inserted or already exists');
+        //     }
             
-            // Close the connection
-            connection.end();
-          });
-        }
+        //     // Close the connection
+        //     connection.end();
+        //   });
+        // }
 
       }
       connection.end()

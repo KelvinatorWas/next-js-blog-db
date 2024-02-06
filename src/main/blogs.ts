@@ -39,6 +39,29 @@ export const getBlogByName = (app: express.Express, connection: Connection) => {
   });
 };
 
+export const getRecentBlogs = (app: express.Express, connection: Connection) => {
+  app.get("/blogs/recent/:amount?", async (req, res) => {
+    const amount = req.params.amount || 3;
+    const newAmount = +amount;
+    if (isNaN(newAmount)) {
+      res.status(400).json({error: `Invalid syntax 'amount' should be a number not '${amount}'!`});
+      console.log("Hello");
+
+      return;
+    }
+
+    connection.query("SELECT post_id, title, description FROM blogs ORDER BY createdAt DESC LIMIT ?",[newAmount], (error, results) => {
+      if (error) {
+        res.status(500).json({ error: "Internal Server Error" });
+        return;
+      }
+
+      // Sends recent blogs as a JSON response
+      res.json(results);
+    });
+  });
+};
+
 export const getBlogByTag = (app: express.Express, connection: Connection) => {
   app.get("/blogs/tag/:tag_id", async (req, res) => {
     // Extract the tag_id parameter from the request params

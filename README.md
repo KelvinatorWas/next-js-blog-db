@@ -1,4 +1,4 @@
-# Node + Express + MySql
+# NextJS-Blog-Databse
 
 ## Getting Started
 
@@ -17,22 +17,22 @@ Before you begin, ensure you have the following installed on your machine:
 1. Clone the repository to your local machine.
 
     ```bash
-    git clone https://github.com/Serzhs/node_express_mysql.git
+    git clone https://github.com/KelvinatorWas/next-js-blog-db.git
     ```
 
-2. Navigate to the project directory.
+3. Navigate to the project directory.
 
     ```bash
-    cd node_express_mysql
+    cd next-js-blog-db
     ```
 
-3. Install project dependencies locally.
+4. Install project dependencies locally.
 
     ```bash
     npm install
     ```
 
-4. Build and run the Docker containers.
+5. Build and run the Docker containers.
 
     ```bash
     docker-compose up --build
